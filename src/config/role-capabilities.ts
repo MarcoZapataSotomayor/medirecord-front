@@ -1,0 +1,73 @@
+import type { RoleCapabilities, UserRole } from "@/types/user"
+
+export const ROLE_CAPABILITIES = {
+  ADMIN: {
+    canRegisterUsers: true,
+    canViewUsers: true,
+    canUploadDocuments: false,
+    canViewOwnDocuments: false,
+    canViewAuthorizedDocuments: false,
+    canIssuePermissions: false,
+    canRevokeOwnPermissions: false,
+    canViewIssuedPermissions: false,
+    canViewReceivedPermissions: false,
+    canRegisterConsultation: false,
+    canViewActivity: true,
+  },
+  PATIENT: {
+    canRegisterUsers: false,
+    canViewUsers: false,
+    canUploadDocuments: true,
+    canViewOwnDocuments: true,
+    canViewAuthorizedDocuments: false,
+    canIssuePermissions: true,
+    canRevokeOwnPermissions: true,
+    canViewIssuedPermissions: true,
+    canViewReceivedPermissions: false,
+    canRegisterConsultation: false,
+    canViewActivity: true,
+  },
+  DOCTOR: {
+    canRegisterUsers: false,
+    canViewUsers: false,
+    canUploadDocuments: false,
+    canViewOwnDocuments: false,
+    canViewAuthorizedDocuments: true,
+    canIssuePermissions: false,
+    canRevokeOwnPermissions: false,
+    canViewIssuedPermissions: false,
+    canViewReceivedPermissions: true,
+    canRegisterConsultation: true,
+    canViewActivity: true,
+  },
+  CLINIC: {
+    canRegisterUsers: false,
+    canViewUsers: false,
+    canUploadDocuments: false,
+    canViewOwnDocuments: false,
+    canViewAuthorizedDocuments: true,
+    canIssuePermissions: false,
+    canRevokeOwnPermissions: false,
+    canViewIssuedPermissions: false,
+    canViewReceivedPermissions: true,
+    canRegisterConsultation: true,
+    canViewActivity: true,
+  },
+  INSURANCE: {
+    canRegisterUsers: false,
+    canViewUsers: false,
+    canUploadDocuments: false,
+    canViewOwnDocuments: false,
+    canViewAuthorizedDocuments: true,
+    canIssuePermissions: false,
+    canRevokeOwnPermissions: false,
+    canViewIssuedPermissions: false,
+    canViewReceivedPermissions: true,
+    canRegisterConsultation: false,
+    canViewActivity: true,
+  },
+} satisfies Record<UserRole, RoleCapabilities>
+
+export function getRoleCapabilities(role: UserRole): RoleCapabilities {
+  return ROLE_CAPABILITIES[role]
+}
